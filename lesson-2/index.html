@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 2: Psicología Visual y Gestalt | SocioNomicsLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .monograph-card {
+            @apply bg-white p-8 md:p-12 rounded-[3rem] border border-slate-200 shadow-sm space-y-8 relative overflow-hidden;
+        }
+
+        .gestalt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .code-snippet {
+            @apply font-mono text-xs bg-slate-900 text-indigo-300 p-4 rounded-xl overflow-x-auto border border-slate-800;
+        }
+
+        .highlight-blue { @apply text-blue-600 font-bold; }
+        
+        #capture-area { padding: 2rem; background-color: #f8fafc; }
+        
+        .gestalt-demo-box {
+            @apply border-2 border-dashed border-slate-200 rounded-3xl p-6 flex flex-col items-center justify-center min-h-[150px] transition-all hover:border-indigo-300;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN SUPERIOR -->
+    <nav class="glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="index_academy.html" class="p-2 hover:bg-slate-100 rounded-full transition text-slate-500" title="Volver al Plan Maestro">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                </a>
+                <div class="h-6 w-[1px] bg-slate-200"></div>
+                <span class="text-xs font-black uppercase tracking-widest text-blue-600">Lección 02</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex gap-3 mr-4">
+                    <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="github" class="w-4 h-4"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+                <button onclick="exportLesson()" class="bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-bold flex items-center gap-2 hover:bg-blue-600 transition shadow-lg">
+                    <i data-lucide="camera" class="w-4 h-4"></i> Exportar Monografía
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="capture-area">
+        <main class="max-w-4xl mx-auto py-12 space-y-16">
+            
+            <!-- HERO DE LECCIÓN -->
+            <header class="text-center space-y-6">
+                <div class="inline-block px-4 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100">
+                    Módulo de Fundamentos Narrativos
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black tracking-tighter text-slate-900">
+                    Leyes de Gestalt: <span class="text-blue-600">Diseñando para el Cerebro</span>
+                </h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                    No vemos puntos ni líneas, vemos patrones. Aprende a usar las reglas de la psicología visual para organizar datos complejos sin decir una sola palabra.
+                </p>
+                
+                <div class="flex items-center justify-center gap-3 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">EA</div>
+                    <div class="text-left">
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Elaborado por</p>
+                        <p class="text-sm font-bold text-slate-800">Eric Araujo Martínez</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- SECCIÓN 1: CONCEPTOS CLAVE -->
+            <section class="monograph-card">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-black tracking-tight">1. El "Software" de la Visión</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Gestalt significa "forma" o "configuración". Estas leyes explican cómo el cerebro agrupa elementos de manera automática. En el storytelling visual, dominarlas es la diferencia entre el <span class="highlight-blue">orden</span> y el <span class="highlight-blue">caos</span>.
+                    </p>
+                    
+                    <div class="gestalt-grid mt-8">
+                        <div class="gestalt-demo-box">
+                            <i data-lucide="combine" class="text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase mb-2">Proximidad</h4>
+                            <p class="text-[10px] text-center text-slate-500">Elementos cercanos se perciben como un solo grupo. Ideal para comparar sub-categorías.</p>
+                        </div>
+                        <div class="gestalt-demo-box">
+                            <i data-lucide="copy" class="text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase mb-2">Semejanza</h4>
+                            <p class="text-[10px] text-center text-slate-500">Formas o colores iguales indican relación. Úsalo para conectar datos entre distintas gráficas.</p>
+                        </div>
+                        <div class="gestalt-demo-box">
+                            <i data-lucide="box" class="text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase mb-2">Cierre</h4>
+                            <p class="text-[10px] text-center text-slate-500">El cerebro completa formas inacabadas. Permite simplificar ejes y cuadrículas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: LABORATORIO INTERACTIVO (ANTES Y DESPUÉS) -->
+            <section class="monograph-card">
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-black tracking-tight">2. El Poder de la Continuidad</h2>
+                    <p class="text-slate-500 text-sm italic">"Los ojos siguen el camino más suave".</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Ejemplo: Sin Gestalt -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-xs uppercase text-slate-400 tracking-widest">Sin Gestalt (Esfuerzo Alto)</h4>
+                        <div class="p-6 bg-slate-50 rounded-[2rem] border border-slate-200">
+                            <canvas id="badGestaltChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-slate-400">
+                            Barras desordenadas y colores aleatorios. El cerebro intenta buscar un patrón donde no existe, generando fatiga.
+                        </p>
+                    </div>
+
+                    <!-- Ejemplo: Con Gestalt -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-xs uppercase text-blue-600 tracking-widest">Con Gestalt (Intuición)</h4>
+                        <div class="p-6 bg-white rounded-[2rem] border border-blue-100 shadow-xl shadow-blue-50">
+                            <canvas id="goodGestaltChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-blue-600 font-bold">
+                            Agrupación por proximidad y orden lógico. El cerebro identifica grupos (ej: Región A vs Región B) instantáneamente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-box bg-blue-50 p-6 rounded-3xl border border-blue-200 flex gap-4">
+                    <div class="p-3 bg-blue-500 text-white rounded-2xl h-fit">
+                        <i data-lucide="info" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-900 text-sm mb-1">Aplicación en SocioNomicsLab</h4>
+                        <p class="text-xs text-blue-800 leading-relaxed">
+                            Cuando diseñamos dashboards de impacto social, usamos la **Semejanza** para que el usuario sepa que el color naranja siempre representa una "crisis", sin importar si está en un mapa o en un gráfico de barras.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: TRADUCCIÓN TÉCNICA -->
+            <section class="monograph-card border-none bg-slate-900 text-white shadow-2xl overflow-hidden">
+                <div class="relative z-10 space-y-10">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-black tracking-tight text-white">3. Implementando Gestalt en Código</h2>
+                        <p class="text-blue-300 text-sm">¿Cómo traducimos una ley psicológica a líneas de programación?</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-sm uppercase text-slate-300 flex items-center gap-2">
+                                <i data-lucide="layout" class="w-4 h-4"></i> CSS: Espaciado y Grupos
+                            </h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                La <strong>Proximidad</strong> se logra manejando correctamente el <code class="code-font text-blue-400">gap</code> en grids o flexbox. Menos espacio = mismo grupo.
+                            </p>
+                            <div class="code-snippet">
+.category-group {
+  display: flex;
+  gap: 4px; /* Proximidad alta */
+  margin-bottom: 24px; /* Separación de otros */
+}
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-sm uppercase text-slate-300 flex items-center gap-2">
+                                <i data-lucide="palette" class="w-4 h-4"></i> JS: Mapeo de Semejanza
+                            </h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                La <strong>Semejanza</strong> se programa vinculando categorías a constantes de color compartidas en todo el sistema.
+                            </p>
+                            <div class="code-snippet">
+const THEME = {
+  SALUD: '#4f46e5',
+  EDUCACION: '#10b981'
+};
+// El color viaja con el dato
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NAVEGACIÓN -->
+            <footer class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left flex flex-col gap-4">
+                    <a href="leccion_01.html" class="text-xs font-bold text-slate-400 hover:text-blue-600 flex items-center gap-2">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i> Anterior: Storytelling Base
+                    </a>
+                    <div class="h-[1px] w-full bg-slate-100"></div>
+                    <div class="text-center md:text-left">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Próxima Lección</p>
+                        <a href="#" class="text-xl font-black text-blue-600 hover:underline flex items-center gap-2">
+                            Lección 3: El Color como Semántica <i data-lucide="chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end gap-2">
+                    <p class="text-[9px] text-slate-400 font-bold italic">SocioNomicsLab Academic Division © 2024</p>
+                    <div class="flex items-center gap-2 p-3 bg-white border border-slate-200 rounded-xl">
+                        <i data-lucide="shield-check" class="text-emerald-500 w-4 h-4"></i>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Licencia CC BY-NC-SA 4.0</span>
+                    </div>
+                    <p class="text-[10px] text-slate-300 font-mono mt-1">CURRICULUM_LECC_02</p>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+
+        // 1. Gráfico SIN GESTALT (Bad)
+        const ctxBad = document.getElementById('badGestaltChart').getContext('2d');
+        new Chart(ctxBad, {
+            type: 'bar',
+            data: {
+                labels: ['Ventas', 'Salud', 'Web', 'Apps', 'Admin', 'Otros'],
+                datasets: [{
+                    data: [12, 19, 13, 15, 8, 11],
+                    backgroundColor: ['#ef4444', '#10b981', '#3b82f6', '#f59e0b', '#6366f1', '#ec4899']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { display: false }, x: { grid: { display: false } } }
+            }
+        });
+
+        // 2. Gráfico CON GESTALT (Proximidad y Semejanza)
+        const ctxGood = document.getElementById('goodGestaltChart').getContext('2d');
+        new Chart(ctxGood, {
+            type: 'bar',
+            data: {
+                labels: ['Digital: Web', 'Digital: Apps', 'Físico: Ventas', 'Físico: Salud'],
+                datasets: [{
+                    data: [25, 22, 15, 12],
+                    backgroundColor: ['#2563eb', '#2563eb', '#cbd5e1', '#cbd5e1'],
+                    borderRadius: 10,
+                    barThickness: 30
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { 
+                    y: { display: false }, 
+                    x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 10 } } } 
+                }
+            }
+        });
+
+        // Exportación
+        async function exportLesson() {
+            const area = document.getElementById('capture-area');
+            const btn = event.currentTarget;
+            btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Generando...';
+            lucide.createIcons();
+
+            const canvas = await html2canvas(area, {
+                scale: 2,
+                backgroundColor: '#f8fafc',
+                useCORS: true
+            });
+
+            const link = document.createElement('a');
+            link.download = 'SocioNomicsLab_Leccion02_Gestalt.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> ¡Listo!';
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="camera" class="w-4 h-4"></i> Exportar Monografía';
+                lucide.createIcons();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
