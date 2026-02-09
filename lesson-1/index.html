@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 1: El Arte del Storytelling Visual | SocioNomicsLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px border #e2e8f0;
+        }
+
+        .monograph-card {
+            @apply bg-white p-8 md:p-12 rounded-[3rem] border border-slate-200 shadow-sm space-y-8;
+        }
+
+        .code-snippet {
+            @apply font-mono text-xs bg-slate-900 text-indigo-300 p-4 rounded-xl overflow-x-auto border border-slate-800;
+        }
+
+        .highlight-indigo { @apply text-indigo-600 font-bold; }
+        
+        /* Estilos para la exportación de imagen */
+        #capture-area { padding: 2rem; background-color: #f8fafc; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN SUPERIOR -->
+    <nav class="glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="index_academy.html" class="p-2 hover:bg-slate-100 rounded-full transition text-slate-500" title="Volver al Plan Maestro">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                </a>
+                <div class="h-6 w-[1px] bg-slate-200"></div>
+                <span class="text-xs font-black uppercase tracking-widest text-indigo-600">Lección 01</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex gap-3 mr-4">
+                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition"><i data-lucide="github" class="w-4 h-4"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+                <button onclick="exportLesson()" class="bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-bold flex items-center gap-2 hover:bg-indigo-600 transition shadow-lg">
+                    <i data-lucide="camera" class="w-4 h-4"></i> Exportar Monografía
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="capture-area">
+        <main class="max-w-4xl mx-auto py-12 space-y-16">
+            
+            <!-- HERO DE LECCIÓN -->
+            <header class="text-center space-y-6">
+                <div class="inline-block px-4 py-1 bg-indigo-50 text-indigo-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-indigo-100">
+                    Módulo de Fundamentos Narrativos
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black tracking-tighter text-slate-900">
+                    Del Dato a la <span class="text-indigo-600">Sabiduría Visual</span>
+                </h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                    Aprenderemos a liderar el "Qué" y el "Cómo" de una historia visual, utilizando la tecnología como el pincel y no como el autor.
+                </p>
+                
+                <div class="flex items-center justify-center gap-3 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xs">EA</div>
+                    <div class="text-left">
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Elaborado por</p>
+                        <p class="text-sm font-bold text-slate-800">Eric Araujo Martínez</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- SECCIÓN 1: EL MARCO CONCEPTUAL (DIKW) -->
+            <section class="monograph-card">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <h2 class="text-3xl font-black tracking-tight">1. La Pirámide del Conocimiento</h2>
+                        <p class="text-slate-600 leading-relaxed italic">
+                            ¿Por qué un gráfico de barras a veces no dice nada y un simple número en rojo lo dice todo?
+                        </p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            En esta lección introducimos el modelo <span class="highlight-indigo">DIKW</span> (Data, Information, Knowledge, Wisdom). Como expertos, nuestro trabajo es llevar al usuario desde la base (datos crudos) hasta la cima (sabiduría para actuar).
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <h4 class="font-bold text-xs uppercase text-indigo-600 mb-1">El Agente</h4>
+                                <p class="text-[10px] text-slate-500 font-medium tracking-tight">Se encarga de procesar el JSON y aplicar estadística en Python.</p>
+                            </div>
+                            <div class="p-4 bg-indigo-600 rounded-2xl text-white shadow-xl shadow-indigo-100">
+                                <h4 class="font-bold text-xs uppercase opacity-80 mb-1">El Humano</h4>
+                                <p class="text-[10px] opacity-90 font-medium tracking-tight">Decide la narrativa: "¿Qué dolor social estamos aliviando con esta gráfica?"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-64 flex flex-col gap-2">
+                        <!-- Representación visual de la pirámide -->
+                        <div class="w-full h-12 bg-indigo-700 rounded-t-lg flex items-center justify-center text-[10px] font-black text-white">SABIDURÍA</div>
+                        <div class="w-full h-14 bg-indigo-500 flex items-center justify-center text-[10px] font-black text-white">CONOCIMIENTO</div>
+                        <div class="w-full h-16 bg-indigo-300 flex items-center justify-center text-[10px] font-black text-indigo-900">INFORMACIÓN</div>
+                        <div class="w-full h-20 bg-slate-200 rounded-b-lg flex items-center justify-center text-[10px] font-black text-slate-500">DATOS CRUDOS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: LABORATORIO DE STORYTELLING -->
+            <section class="monograph-card">
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-black tracking-tight">2. Laboratorio Interactivo: Contraste Visual</h2>
+                    <p class="text-slate-500 text-sm">Compara cómo el mismo conjunto de datos puede pasar de ser un "reporte" a ser una "historia".</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Ejemplo 1: El Reporte -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                            <h4 class="font-bold text-sm text-slate-400 uppercase tracking-widest">El "Reporte" (Ruido)</h4>
+                        </div>
+                        <div class="p-6 bg-slate-100 rounded-[2rem] border border-slate-200 opacity-60">
+                            <canvas id="rawChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                            Problema: Demasiadas categorías, colores sin sentido, sin jerarquía visual.
+                        </p>
+                    </div>
+
+                    <!-- Ejemplo 2: La Historia -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                            <h4 class="font-bold text-sm text-indigo-600 uppercase tracking-widest">La "Historia" (Claridad)</h4>
+                        </div>
+                        <div class="p-6 bg-white rounded-[2rem] border border-indigo-100 shadow-2xl shadow-indigo-100/50">
+                            <canvas id="storyChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-indigo-600 font-bold leading-relaxed italic">
+                            Solución: Enfoque en el outlier, color con intención semántica, simplificación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-box bg-amber-50 p-6 rounded-3xl border border-amber-200 flex gap-4">
+                    <div class="p-3 bg-amber-400 text-white rounded-2xl h-fit shadow-md">
+                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-amber-900 text-sm mb-1">Principio de Storytelling</h4>
+                        <p class="text-xs text-amber-800 leading-relaxed">
+                            No obligues al usuario a buscar el dato. <strong>Resáltalo</strong>. Si el éxito es que subió el empleo, el color más brillante debe estar en esa barra.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: LA TUBERÍA TÉCNICA (PIPELINE) -->
+            <section class="monograph-card border-none bg-slate-900 text-white shadow-2xl overflow-hidden">
+                <div class="relative z-10 space-y-10">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-black tracking-tight">3. Los Pilares Técnicos</h2>
+                        <p class="text-indigo-300 text-sm font-medium">Aunque el storytelling es el rey, la tecnología es el reino. Estos son los conceptos que profundizaremos en la maestría:</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- JSON -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="file-json" class="text-amber-400 w-5 h-5"></i>
+                                <h4 class="font-bold text-sm uppercase">JSON: La Estructura</h4>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                Es el "esqueleto" del dato. Aprenderás a estructurar jerarquías sociales en objetos que el navegador pueda digerir.
+                            </p>
+                            <div class="code-snippet">
+{
+  "impacto": "Salud",
+  "valor": 85,
+  "trend": "up"
+}
+                            </div>
+                        </div>
+
+                        <!-- Python -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="terminal" class="text-blue-400 w-5 h-5"></i>
+                                <h4 class="font-bold text-sm uppercase">Python: El Músculo</h4>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                Limpieza de datos. Utilizaremos agentes para realizar cálculos de desviación estándar y filtrado de ruido masivo.
+                            </p>
+                            <div class="code-snippet">
+# Limpieza de nulos
+df.dropna(subset=['social_index'])
+                            </div>
+                        </div>
+
+                        <!-- JS / D3 -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="code-2" class="text-emerald-400 w-5 h-5"></i>
+                                <h4 class="font-bold text-sm uppercase">JS: El Pincel</h4>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                La interfaz. Canvas y D3.js nos permiten "dibujar" el dato, dándole vida y permitiendo que el usuario interactúe.
+                            </p>
+                            <div class="code-snippet">
+ctx.arc(x, y, radius, 0, PI*2);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NAVEGACIÓN DE LECCIONES -->
+            <footer class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Próximo paso</p>
+                    <a href="#" class="text-xl font-black text-indigo-600 hover:underline flex items-center gap-2">
+                        Lección 2: Las Leyes de Gestalt <i data-lucide="chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end gap-2">
+                    <p class="text-[9px] text-slate-400 font-bold italic">SocioNomicsLab Academic Division © 2024</p>
+                    <div class="flex items-center gap-2 p-3 bg-white border border-slate-200 rounded-xl">
+                        <i data-lucide="shield-check" class="text-emerald-500 w-4 h-4"></i>
+                        <span class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Licencia CC BY-NC-SA 4.0</span>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Configuración Global de Gráficos
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+        Chart.defaults.color = '#94a3b8';
+
+        // 1. Gráfico "RUIDO" (El Reporte)
+        const ctxRaw = document.getElementById('rawChart').getContext('2d');
+        new Chart(ctxRaw, {
+            type: 'bar',
+            data: {
+                labels: ['A', 'B', 'C', 'D', 'E', 'F'],
+                datasets: [{
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: ['#cbd5e1', '#94a3b8', '#64748b', '#475569', '#334155', '#1e293b']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { display: false }, x: { grid: { display: false } } }
+            }
+        });
+
+        // 2. Gráfico "HISTORIA" (La Narrativa)
+        const ctxStory = document.getElementById('storyChart').getContext('2d');
+        new Chart(ctxStory, {
+            type: 'bar',
+            data: {
+                labels: ['Impacto Social', 'Otros factores'],
+                datasets: [{
+                    data: [85, 15],
+                    backgroundColor: ['#4f46e5', '#f1f5f9'],
+                    borderRadius: 20,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                scales: { 
+                    y: { display: false }, 
+                    x: { grid: { display: false }, ticks: { font: { weight: 'bold', size: 10 }, color: '#4f46e5' } } 
+                }
+            }
+        });
+
+        // Función de exportación de imagen
+        async function exportLesson() {
+            const area = document.getElementById('capture-area');
+            const btn = event.currentTarget;
+            
+            btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Generando...';
+            lucide.createIcons();
+
+            const canvas = await html2canvas(area, {
+                scale: 2,
+                backgroundColor: '#f8fafc',
+                useCORS: true
+            });
+
+            const link = document.createElement('a');
+            link.download = 'SocioNomicsLab_Leccion01_EricAraujo.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> ¡Listo!';
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="camera" class="w-4 h-4"></i> Exportar Monografía';
+                lucide.createIcons();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
